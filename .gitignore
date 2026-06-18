@@ -33,3 +33,4 @@ screenshots/*.png
 # OS
 .DS_Store
 Thumbs.db
+pretty.output

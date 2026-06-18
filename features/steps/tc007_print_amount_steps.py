@@ -1,5 +1,5 @@
 """
-Step definitions for TC_007 — Automation Prints Displayed Amount.
+Step definitions for TC_007 - Automation Prints Displayed Amount.
 Captures the account balance and prints it to execution logs.
 """
 from behave import when, then
@@ -29,7 +29,7 @@ def step_balance_printed_to_logs(context):
 def step_printed_balance_not_empty(context):
     balances = context.captured_balances
     assert len(balances) > 0, (
-        "Printed balance list should not be empty — "
+        "Printed balance list should not be empty - "
         "at least one account must be present"
     )
     for acc in balances:

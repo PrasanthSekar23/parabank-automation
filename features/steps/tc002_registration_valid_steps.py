@@ -1,5 +1,5 @@
 """
-Step definitions for TC_002 — Registration with Valid Details.
+Step definitions for TC_002 - Registration with Valid Details.
 Creates a new account and stores credentials in shared_data for TC_005 reuse.
 """
 from behave import given, when, then

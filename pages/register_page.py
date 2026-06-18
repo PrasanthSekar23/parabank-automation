@@ -1,5 +1,5 @@
 """
-Register Page Object — covers the registration form and its validations.
+Register Page Object - covers the registration form and its validations.
 """
 from pages.base_page import BasePage
 

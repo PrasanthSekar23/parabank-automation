@@ -1,5 +1,5 @@
 """
-Behave environment hooks — manages browser lifecycle across all scenarios.
+Behave environment hooks - manages browser lifecycle across all scenarios.
 """
 import os
 from datetime import datetime
@@ -26,7 +26,7 @@ def before_all(context):
     context.shared_data = {}
 
     print("\n" + "=" * 55)
-    print("  ParaBank Automation Suite — Starting")
+    print("  ParaBank Automation Suite - Starting")
     print(f"  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 55)
 
@@ -34,15 +34,15 @@ def before_all(context):
 def before_scenario(context, scenario):
     """Open a fresh browser page before every scenario."""
     context.page = context.browser.new_page(viewport={"width": 1280, "height": 720})
-    print(f"\n▶  Running: [{scenario.tags[0] if scenario.tags else ''}] {scenario.name}")
+    print(f"\n>> Running: [{scenario.tags[0] if scenario.tags else ''}] {scenario.name}")
 
 
 def after_scenario(context, scenario):
     """
     Capture a screenshot on failure and close the page after every scenario.
     """
-    status_icon = "✅" if scenario.status.name == "passed" else "❌"
-    print(f"{status_icon}  Finished: {scenario.name} — {scenario.status.name.upper()}")
+    status_icon = "[PASS]" if scenario.status.name == "passed" else "[FAIL]"
+    print(f"{status_icon} Finished: {scenario.name} - {scenario.status.name.upper()}")
 
     if scenario.status.name == "failed":
         safe_name = scenario.name.replace(" ", "_").replace("/", "_")[:60]
@@ -62,6 +62,6 @@ def after_all(context):
     context.browser.close()
     context.playwright.stop()
     print("\n" + "=" * 55)
-    print("  ParaBank Automation Suite — Completed")
+    print("  ParaBank Automation Suite - Completed")
     print(f"  {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 55 + "\n")

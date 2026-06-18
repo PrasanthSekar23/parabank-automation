@@ -1,5 +1,5 @@
 """
-Test data factory — generates dynamic user data to ensure uniqueness per run.
+Test data factory - generates dynamic user data to ensure uniqueness per run.
 """
 import time
 

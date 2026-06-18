@@ -1,5 +1,5 @@
 """
-Step definitions for TC_006 — Account Amount Displayed After Login.
+Step definitions for TC_006 - Account Amount Displayed After Login.
 Logs in and verifies the balance table is rendered with at least one row.
 """
 from behave import given, when, then
@@ -27,9 +27,9 @@ def step_user_is_logged_in(context):
 @when("the user navigates to the account overview page")
 def step_navigate_to_overview(context):
     context.account_page = AccountOverviewPage(context.page)
-    # The overview is shown immediately after login; navigate explicitly if needed
     if not context.account_page.is_overview_displayed():
         context.account_page.navigate_to_overview()
+    context.page.wait_for_timeout(1000)
 
 
 @then("the account overview page title should be visible")

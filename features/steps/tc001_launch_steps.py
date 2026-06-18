@@ -1,5 +1,5 @@
 """
-Step definitions for TC_001 — Launch Application.
+Step definitions for TC_001 - Launch Application.
 Verifies that the ParaBank website opens and the homepage loads correctly.
 """
 from behave import given, when, then
@@ -21,7 +21,7 @@ def step_homepage_loaded(context):
     title = context.home_page.get_page_title()
     assert title, "Page title should not be empty after navigation"
     context.home_page.take_screenshot("TC001_homepage_loaded")
-    print(f"\n  [TC_001] Page loaded — Title: '{title}'")
+    print(f"\n  [TC_001] Page loaded - Title: '{title}'")
 
 
 @then('the page title should contain "{text}"')
@@ -38,4 +38,4 @@ def step_login_panel_visible(context):
     assert context.home_page.is_login_panel_visible(), (
         "Login panel should be visible on the ParaBank homepage"
     )
-    print("  [TC_001] Login panel is visible — Homepage loaded successfully")
+    print("  [TC_001] Login panel is visible - Homepage loaded successfully")

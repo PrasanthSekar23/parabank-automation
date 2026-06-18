@@ -1,5 +1,5 @@
 """
-Account Overview Page Object — post-login dashboard showing account balances.
+Account Overview Page Object - post-login dashboard showing account balances.
 """
 from pages.base_page import BasePage
 
@@ -23,11 +23,19 @@ class AccountOverviewPage(BasePage):
 
     def get_page_title(self) -> str:
         """Return the main heading text of the overview page."""
-        return self.page.locator(self.PAGE_TITLE).text_content().strip()
+        return self.page.locator(self.PAGE_TITLE).first.text_content().strip()
 
     def is_overview_displayed(self) -> bool:
         """Return True when the account overview heading is visible."""
-        return self.page.locator(self.PAGE_TITLE).is_visible()
+        try:
+            titles = self.page.locator(self.PAGE_TITLE).all()
+            for title in titles:
+                text = title.text_content().strip()
+                if "Accounts Overview" in text:
+                    return True
+            return False
+        except Exception:
+            return False
 
     def get_account_balances(self) -> list[dict]:
         """

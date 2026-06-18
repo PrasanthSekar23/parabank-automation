@@ -1,5 +1,5 @@
 """
-Step definitions for TC_003 — Mandatory Field Validation.
+Step definitions for TC_003 - Mandatory Field Validation.
 Submits an empty form and asserts all required field errors appear.
 """
 from behave import when, then

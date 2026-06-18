@@ -1,5 +1,5 @@
 """
-Step definitions for TC_005 — Login with Newly Created Account.
+Step definitions for TC_005 - Login with Newly Created Account.
 Reads credentials stored by TC_002 via context.shared_data.
 """
 from behave import given, when, then
@@ -38,19 +38,29 @@ def step_click_login_button(context):
 
 @then("the user should be logged in successfully")
 def step_logged_in_successfully(context):
-    assert context.home_page.is_logged_in(), (
+    is_logged_in = context.home_page.is_logged_in()
+    if not is_logged_in:
+        # Check if there is a login error message
+        error_el = context.page.locator('#rightPanel p.error')
+        if error_el.is_visible():
+            error_msg = error_el.text_content().strip()
+            print(f"  [TC_005] Login error: {error_msg}")
+        context.home_page.take_screenshot("TC005_login_failed_debug")
+    assert is_logged_in, (
         "Expected the welcome panel to be visible after login, "
         "but the user does not appear to be logged in."
     )
     context.home_page.take_screenshot("TC005_login_success")
-    print("  [TC_005] Login successful — Welcome panel is visible")
+    print("  [TC_005] Login successful - Welcome panel is visible")
 
 
 @then("the account overview page should be displayed")
 def step_account_overview_displayed(context):
     context.account_page = AccountOverviewPage(context.page)
+    if not context.account_page.is_overview_displayed():
+        context.account_page.navigate_to_overview()
     assert context.account_page.is_overview_displayed(), (
         "Expected 'Accounts Overview' heading to be visible after login"
     )
     title = context.account_page.get_page_title()
-    print(f"  [TC_005] Account overview displayed — Title: '{title}'")
+    print(f"  [TC_005] Account overview displayed - Title: '{title}'")

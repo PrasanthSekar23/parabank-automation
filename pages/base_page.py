@@ -1,5 +1,5 @@
 """
-Base Page Object — common methods shared by all page classes.
+Base Page Object - common methods shared by all page classes.
 """
 import os
 from datetime import datetime

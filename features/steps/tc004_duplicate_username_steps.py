@@ -1,10 +1,9 @@
 """
-Step definitions for TC_004 — Duplicate Username Validation.
+Step definitions for TC_004 - Duplicate Username Validation.
 Registers a user successfully, then tries the same username again
 and asserts the 'already exists' error is shown.
 """
 from behave import when, then
-from pages.home_page import HomePage
 from pages.register_page import RegisterPage
 from utils.test_data import generate_user_data
 
@@ -28,8 +27,8 @@ def step_register_unique_user(context):
 
 @when("the user clicks the Register link again")
 def step_click_register_again(context):
-    context.home_page = HomePage(context.page)
-    context.home_page.click_register()
+    context.register_page = RegisterPage(context.page)
+    context.register_page.navigate_to_register()
 
 
 @when("the user attempts to register with the same username")

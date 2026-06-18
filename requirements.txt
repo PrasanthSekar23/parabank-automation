@@ -1,0 +1,2 @@
+playwright>=1.44.0
+behave>=1.2.6
